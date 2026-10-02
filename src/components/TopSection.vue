@@ -7,6 +7,7 @@
         <h1 class="hero-headline">
           Happy Birthday, <em>Zeba.</em>
         </h1>
+        <p class="hero-subtext">tap the cake ✨</p>
       </div>
 
       <!-- 2. SIDE BY SIDE: Cake + Her Picture (Side by Side on Mobile & Desktop) -->

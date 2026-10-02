@@ -2,21 +2,38 @@
   <section class="section-finale" id="finale-section">
     <div class="finale-container">
       
-      <!-- Portrait Frame of Zeba -->
-      <div class="finale-portrait-card reveal-on-scroll">
-        <div class="finale-img-wrapper">
-          <img 
-            src="/cake-pic/zeba2.png" 
-            alt="Zeba - Forever" 
-            class="finale-img"
-            loading="lazy"
-          />
-          <div class="finale-img-sheen"></div>
+      <!-- Side by Side: Cat 2 & Lily Pic -->
+      <div class="finale-duo-container reveal-on-scroll">
+        <!-- Card 1: Cat 2 -->
+        <div class="finale-duo-card cat-card">
+          <div class="finale-card-media">
+            <img 
+              src="/cake-pic/cat2.jpg" 
+              alt="Cute Cat" 
+              class="finale-duo-img"
+              loading="lazy"
+            />
+            <div class="finale-img-sheen"></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lily Flower -->
+        <div class="finale-duo-card lily-card">
+          <div class="finale-card-media">
+            <img 
+              src="/cake-pic/lily.jpg" 
+              alt="Lily Flower" 
+              class="finale-duo-img"
+              loading="lazy"
+            />
+            <div class="finale-img-sheen"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Quiet Words -->
+      <!-- Message: here is a lily for you -->
       <div class="finale-text-content reveal-on-scroll">
+        <p class="lily-message">here is a lily for you</p>
         <h2 class="finale-title">Happy Birthday, Zeba.</h2>
         <p class="finale-subtitle">Always stay happy.</p>
         <div class="finale-symbol">✦</div>
