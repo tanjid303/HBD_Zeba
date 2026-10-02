@@ -4,36 +4,29 @@
       
       <!-- 1. Top Title & Greeting -->
       <div class="top-intro-block fade-in-up" data-delay="100">
-        <p class="hero-eyebrow">For Zeba</p>
         <h1 class="hero-headline">
           Happy Birthday, <em>Zeba.</em>
         </h1>
-        <p class="hero-subtext">tap the cake to explore</p>
       </div>
 
-      <!-- 2. SIDE BY SIDE: Cake + Her Picture (Appears Side by Side on Mobile & Desktop) -->
+      <!-- 2. SIDE BY SIDE: Cake + Her Picture (Side by Side on Mobile & Desktop) -->
       <div class="duo-stage-container">
         
         <!-- Column 1: The Interactive Birthday Cake -->
-        <div class="duo-card cake-duo-card">
-          <div class="duo-badge">
-            <span class="pulse-dot"></span>
-            <span>Cake 0{{ currentState + 1 }}</span>
-          </div>
-
+        <div 
+          class="duo-card cake-duo-card clickable-card"
+          role="button" 
+          tabindex="0"
+          aria-label="Interactive birthday cake. Tap to transform cake, photo, and theme."
+          @click="handleCakeTap"
+          @keydown.enter.prevent="handleCakeTap"
+          @keydown.space.prevent="handleCakeTap"
+        >
           <div class="cake-stage-wrapper">
             <div class="cake-halo" aria-hidden="true"></div>
             <canvas ref="particleCanvasRef" class="cake-particle-canvas" aria-hidden="true"></canvas>
 
-            <div 
-              class="cake-stage" 
-              role="button" 
-              tabindex="0"
-              aria-label="Interactive birthday cake. Tap to transform cake, photo, and theme."
-              @click="handleCakeTap"
-              @keydown.enter.prevent="handleCakeTap"
-              @keydown.space.prevent="handleCakeTap"
-            >
+            <div class="cake-stage">
               <!-- Ripple Effect -->
               <div ref="rippleRef" class="cake-ripple"></div>
 
@@ -43,7 +36,7 @@
                   v-for="(cake, index) in cakeList"
                   :key="cake.id"
                   :src="cake.imageSrc" 
-                  :alt="'Birthday Cake - ' + cake.name" 
+                  :alt="'Birthday Cake ' + (index + 1)" 
                   class="cake-layer" 
                   :class="{ active: index === currentState }"
                 />
@@ -55,11 +48,6 @@
                 <span class="stardust-mote mote-2">✧</span>
               </div>
             </div>
-          </div>
-
-          <div class="duo-caption">
-            <p class="duo-title">{{ currentCake.name }}</p>
-            <span class="duo-tap-hint">tap cake 👆</span>
           </div>
         </div>
 
@@ -73,51 +61,36 @@
           @keydown.enter.prevent="handleCakeTap"
           @keydown.space.prevent="handleCakeTap"
         >
-          <div class="duo-badge photo-duo-badge">
-            <span>{{ currentPhoto.tag }}</span>
-          </div>
-
           <div class="zeba-photo-wrapper">
             <Transition name="photo-crossfade" mode="out-in">
               <img 
                 :key="currentPhoto.src"
                 :src="currentPhoto.src" 
-                :alt="currentPhoto.caption" 
+                alt="Zeba" 
                 class="zeba-duo-img"
                 loading="eager"
               />
             </Transition>
             <div class="photo-lens-sheen"></div>
           </div>
-
-          <div class="duo-caption">
-            <p class="duo-title">“{{ currentPhoto.caption }}”</p>
-            <span class="duo-sub-hint">{{ currentPhoto.sub }}</span>
-          </div>
         </div>
 
       </div>
 
-      <!-- 3. Progress Dots & Instructions -->
-      <div class="cake-state-card">
-        <div class="cake-state-indicators">
-          <button 
-            v-for="(cake, index) in cakeList"
-            :key="cake.id"
-            class="state-step-dot"
-            :class="{ active: index === currentState }"
-            :aria-label="'Switch to state ' + (index + 1)"
-            @click.stop="handleDirectSelect(index)"
-          ></button>
-        </div>
-        <p class="state-step-desc">
-          Tap the cake or photo to transform the cake, Zeba's picture, and the atmosphere.
-        </p>
+      <!-- 3. Minimal State Dots Indicator -->
+      <div class="state-dots-container">
+        <button 
+          v-for="(cake, index) in cakeList"
+          :key="cake.id"
+          class="state-step-dot"
+          :class="{ active: index === currentState }"
+          :aria-label="'Switch to state ' + (index + 1)"
+          @click.stop="handleDirectSelect(index)"
+        ></button>
       </div>
 
-      <!-- 4. Scroll Cue to Letter -->
+      <!-- 4. Minimal Scroll Cue -->
       <div class="scroll-cue">
-        <span class="scroll-cue-text">scroll down for your birthday letter</span>
         <div class="scroll-cue-track">
           <div class="scroll-cue-thumb"></div>
         </div>
@@ -150,34 +123,10 @@ const { init: initParticles, spawnBurst, destroy: destroyParticles } = usePartic
 
 // Available Photos of Zeba (synchronized with each cake state)
 const zebaPhotos = [
-  {
-    id: 1,
-    src: '/cake-pic/zeba1.png',
-    tag: 'PORTRAIT · 01',
-    caption: 'one of my favorite humans.',
-    sub: 'moment one'
-  },
-  {
-    id: 2,
-    src: '/cake-pic/zeba2.png',
-    tag: 'PORTRAIT · 02',
-    caption: 'serene, quiet elegance.',
-    sub: 'moment two'
-  },
-  {
-    id: 3,
-    src: '/cake-pic/zeba3.png',
-    tag: 'PORTRAIT · 03',
-    caption: 'unfiltered, radiant, authentic.',
-    sub: 'moment three'
-  },
-  {
-    id: 4,
-    src: '/cake-pic/zeba1.png',
-    tag: 'PORTRAIT · 04',
-    caption: 'always stay happy.',
-    sub: 'wishing you the best'
-  }
+  { id: 1, src: '/cake-pic/zeba1.png' },
+  { id: 2, src: '/cake-pic/zeba2.png' },
+  { id: 3, src: '/cake-pic/zeba3.png' },
+  { id: 4, src: '/cake-pic/zeba1.png' }
 ];
 
 const currentCake = computed(() => props.cakeList[props.currentState] || props.cakeList[0]);

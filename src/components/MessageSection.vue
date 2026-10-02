@@ -2,9 +2,8 @@
   <section class="section-message" id="message-section">
     <div class="message-container">
       
-      <!-- Section Tag -->
+      <!-- Section Title -->
       <div class="letter-top-cue reveal-on-scroll">
-        <span class="letter-badge">handwritten note</span>
         <h2 class="letter-main-title">A Letter For You</h2>
       </div>
 
@@ -20,12 +19,6 @@
           
           <!-- Margin Line -->
           <div class="paper-margin-line" aria-hidden="true"></div>
-
-          <!-- Paper Header (Date & Note in Cursive) -->
-          <div class="sheet-header">
-            <span class="sheet-postmark">Birthday Note</span>
-            <span class="sheet-date">October 2026 · late night</span>
-          </div>
 
           <!-- Handwritten Letter Body -->
           <div class="sheet-body">

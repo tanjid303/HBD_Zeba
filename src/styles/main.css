@@ -271,7 +271,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.45rem 0.75rem;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -297,30 +297,18 @@ body {
   box-shadow: 0 0 8px var(--accent-glow);
 }
 
-.stepper-text {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-left: 0.2rem;
-  transition: color 1.1s var(--smooth-ease);
-}
-
 .sound-toggle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  border-radius: 50%;
   color: var(--text-muted);
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -421,13 +409,13 @@ main {
 .duo-card {
   background: var(--surface-card);
   border-radius: 24px;
-  padding: 1.75rem 1.5rem;
+  padding: 1.5rem;
   border: 1px solid var(--border-subtle);
   box-shadow: 0 16px 40px -12px rgba(25, 12, 45, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
   transition: transform 0.4s var(--smooth-ease), box-shadow 0.4s var(--smooth-ease), var(--theme-transition);
 }
@@ -435,26 +423,6 @@ main {
 .duo-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 20px 45px -10px var(--accent-glow);
-}
-
-.duo-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.75rem;
-  background: var(--surface-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-  margin-bottom: 1rem;
-}
-
-.photo-duo-badge {
-  color: var(--text-muted);
 }
 
 /* Cake Stage in Duo Card */
@@ -552,56 +520,43 @@ main {
   pointer-events: none;
 }
 
-/* Duo Captions */
-.duo-caption {
+/* Minimal State Dots Indicator */
+.state-dots-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 0.3rem;
-  margin-top: 1.2rem;
-  width: 100%;
+  gap: 0.75rem;
+  margin: 1.25rem auto 0;
 }
 
-.duo-title {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: var(--text-main);
-  font-weight: 500;
-  line-height: 1.35;
-  transition: color 1.1s var(--smooth-ease);
+.state-step-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-emphasis);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s var(--smooth-ease);
+  padding: 0;
 }
 
-.duo-tap-hint {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-  animation: pulseLight 2s infinite;
+.state-step-dot:hover {
+  background: var(--accent-primary);
+  transform: scale(1.2);
 }
 
-.duo-sub-hint {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+.state-step-dot.active {
+  background: var(--accent-vivid);
+  transform: scale(1.45);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .scroll-cue {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
   margin-top: 2rem;
   opacity: 0.75;
-}
-
-.scroll-cue-text {
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
 }
 
 .scroll-cue-track {
@@ -1630,17 +1585,10 @@ main {
   .duo-card {
     min-width: 0 !important;
     width: 100% !important;
-    padding: 0.85rem 0.5rem 0.95rem !important;
+    padding: 0.75rem 0.4rem !important;
     border-radius: 18px !important;
     box-shadow: 0 10px 28px -8px rgba(25, 12, 45, 0.07);
-    justify-content: space-between;
-  }
-
-  .duo-badge {
-    font-size: 0.58rem !important;
-    padding: 0.2rem 0.5rem !important;
-    margin-bottom: 0.5rem !important;
-    letter-spacing: 0.08em;
+    justify-content: center !important;
   }
 
   .cake-stage-wrapper {
@@ -1671,43 +1619,18 @@ main {
     box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.12) !important;
   }
 
-  .duo-caption {
-    margin-top: 0.6rem !important;
-    gap: 0.2rem !important;
+  .state-dots-container {
+    margin-top: 0.85rem !important;
+    gap: 0.6rem !important;
   }
 
-  .duo-title {
-    font-size: clamp(0.75rem, 2.6vw, 0.88rem) !important;
-    line-height: 1.25 !important;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  .duo-tap-hint {
-    font-size: 0.64rem !important;
-  }
-
-  .duo-sub-hint {
-    font-size: 0.58rem !important;
-  }
-
-  .cake-state-card {
-    padding: 1rem 0.85rem !important;
-    margin-top: 0.75rem !important;
-    border-radius: 16px !important;
-  }
-
-  .state-step-desc {
-    font-size: 0.72rem !important;
-    line-height: 1.4 !important;
+  .state-step-dot {
+    width: 8px !important;
+    height: 8px !important;
   }
 
   .scroll-cue {
     margin-top: 1.25rem !important;
-  }
-
-  .scroll-cue-text {
-    font-size: 0.62rem !important;
   }
 
   .section-finale {
@@ -1749,13 +1672,8 @@ main {
   }
 
   .duo-card {
-    padding: 0.7rem 0.35rem 0.8rem !important;
+    padding: 0.6rem 0.35rem !important;
     border-radius: 14px !important;
-  }
-
-  .duo-badge {
-    font-size: 0.54rem !important;
-    padding: 0.15rem 0.4rem !important;
   }
 
   .cake-stage-wrapper {
@@ -1781,19 +1699,6 @@ main {
     width: 114px !important;
     height: 114px !important;
     border-radius: 12px !important;
-  }
-
-  .duo-title {
-    font-size: 0.72rem !important;
-    line-height: 1.2 !important;
-  }
-
-  .duo-tap-hint {
-    font-size: 0.58rem !important;
-  }
-
-  .duo-sub-hint {
-    font-size: 0.54rem !important;
   }
 
   .finale-img-wrapper {
